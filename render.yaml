@@ -3,7 +3,8 @@ services:
     name: anon-bot
     env: python
     buildCommand: |
-      pip install --upgrade pip setuptools wheel
-      pip install -r requirements.txt
+      python -m pip install --upgrade pip setuptools wheel
+      python -m pip install --only-binary=:all: pydantic-core pydantic
+      python -m pip install -r requirements.txt
     startCommand: python bot.py
     autoDeploy: true
