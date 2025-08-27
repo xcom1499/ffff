@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from typing import Optional
 
 DB_PATH = os.getenv("DATABASE_PATH", "data/bot.db")
-MIGRATIONS_DIR = "migrations"
+MIGRATIONS_DIR = "."
 TTL_DAYS = int(os.getenv("TTL_DAYS", "30"))
 SESSION_TTL_SECONDS = int(os.getenv("SESSION_TTL_SECONDS", "900"))
 
@@ -183,4 +183,5 @@ def count_users() -> int:
         cur = conn.cursor()
         cur.execute("SELECT COUNT(*) AS c FROM users")
         row = cur.fetchone()
+
         return int(row["c"]) if row else 0
